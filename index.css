@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --sun-size: 50px;
+    --mercury-orbit: calc(57.909px / 5);
+    /* La distance moyenne Mercure-Soleil est d'environ 57.909 millions de kilomètres */
+    --venus-orbit: calc(108.160px / 5);
+    /* La distance moyenne Vénus-Soleil est d'environ 108.160 millions de kilomètres */
+    --earth-orbit: calc(149.6px / 5);
+    /* La distance moyenne Terre-Soleil est d'environ 149.6 millions de kilomètres */
+    --mars-orbit: calc(227.9px / 5);
+    /* La distance moyenne Mars-Soleil est d'environ 227.9 millions de kilomètres */
+    --jupiter-orbit: calc(778.5px / 5);
+    /* La distance moyenne Jupiter-Soleil est d'environ 778.5 millions de kilomètres */
+    --saturn-orbit: calc(1427.0px / 5);
+    /* La distance moyenne Saturne-Soleil est d'environ 1427.0 millions de kilomètres */
+    --uranus-orbit: calc(2871.0px / 5);
+    /* La distance moyenne Uranus-Soleil est d'environ 2871.0 millions de kilomètres */
+    --neptune-orbit: calc(4497.1px / 5);
+    /* La distance moyenne Neptune-Soleil est d'environ 4497.1 millions de kilomètres */
+    /* --sun-size: 1392700px / 1000; */
+    --mercury-size: calc(4879.4px / 1000);
+    --venus-size: calc(12104px / 1000);
+    --earth-size: calc(12742px / 1000);
+    --mars-size: calc(6779px / 1000);
+    --jupiter-size: calc(139822px / 1000);
+    --saturn-size: calc(116464px / 1000);
+    --uranus-size: calc(50724px / 1000);
+    --neptune-size: calc(49244px / 1000);
+}
+
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    background-image: url("https://st4.depositphotos.com/21149286/23043/i/450/depositphotos_230431034-stock-photo-stars-in-the-night-sky.jpg");
+}
+
+.orbit {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbit 10s linear infinite;
+}
+
+.sun {
+    background-color: yellow;
+    width: var(--sun-size);
+    height: var(--sun-size);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.planet-info {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px 40px;
+    border-radius: 20px;
+}
+
+.planet-info p:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.planet {
+    display: block;
+    width: 20px;
+    position: absolute;
+    left: 50%;
+    border-radius: 50%;
+    height: 20px;
+}
+
+.mercury {
+    animation-duration: 2.89016s;
+    width: calc(var(--sun-size) + var(--mercury-orbit));
+    height: calc(var(--sun-size) + var(--mercury-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--mercury-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--mercury-orbit)) / 2));
+    z-index: 9;
+}
+
+.mercury:hover {
+    border: 1px solid white;
+}
+
+.mercury:hover+.mercury-info {
+    display: block;
+}
+
+.mercury .planet {
+    background-color: gray;
+    width: var(--mercury-size);
+    height: var(--mercury-size);
+    top: -2.5px;
+}
+
+.venus {
+    animation-duration: 7.38237s;
+    width: calc(var(--sun-size) + var(--venus-orbit));
+    height: calc(var(--sun-size) + var(--venus-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--venus-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--venus-orbit)) / 2));
+    z-index: 8;
+}
+
+.venus .planet {
+    background-color: orange;
+    width: var(--venus-size);
+    height: var(--venus-size);
+    top: -5px;
+}
+
+.venus:hover {
+    border: 1px solid white;
+}
+
+.venus:hover+.venus-info {
+    display: block;
+}
+
+.earth {
+    animation-duration: 12.00021s;
+    width: calc(var(--sun-size) + var(--earth-orbit));
+    height: calc(var(--sun-size) + var(--earth-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--earth-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--earth-orbit)) / 2));
+    z-index: 7;
+}
+
+.earth>.planet {
+    background-color: #3b5998;
+    width: var(--earth-size);
+    height: var(--earth-size);
+    top: -5px;
+}
+
+.earth:hover {
+    border: 1px solid white;
+}
+
+.earth:hover+.earth-info {
+    display: block;
+}
+
+.orbit:hover .planet {
+    box-shadow:
+        0 0 4px 2px #fff,
+        /* inner white */
+        0 0 4px 2px #f0f,
+        /* middle magenta */
+        0 0 4px 3px #0ff;
+    /* outer cyan */
+}
+
+.earth .moon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: transparent;
+    padding: 10px;
+}
+
+.earth .moon .planet {
+    background-color: gray;
+    width: 4px;
+    height: 4px;
+    top: -2px;
+}
+
+.mars {
+    animation-duration: 22.57017s;
+    width: calc(var(--sun-size) + var(--mars-orbit));
+    height: calc(var(--sun-size) + var(--mars-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--mars-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--mars-orbit)) / 2));
+    z-index: 6;
+}
+
+.mars .planet {
+    background-color: #ff5733;
+    width: var(--mars-size);
+    height: var(--mars-size);
+    top: -4px;
+}
+
+.mars:hover {
+    border: 1px solid white;
+}
+
+.mars:hover+.mars-info {
+    display: block;
+}
+
+.jupiter {
+    animation-duration: 142.35138s;
+    width: calc(var(--sun-size) + var(--jupiter-orbit));
+    height: calc(var(--sun-size) + var(--jupiter-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--jupiter-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--jupiter-orbit)) / 2));
+    z-index: 5;
+}
+
+.jupiter .planet {
+    background-color: #f0ca00;
+    width: calc(var(--jupiter-size) / 5)
+        /* too big */
+    ;
+    height: calc(var(--jupiter-size) / 5)
+        /* too big */
+    ;
+    top: -12px;
+}
+
+.jupiter:hover {
+    border: 1px solid white;
+}
+
+.jupiter:hover+.jupiter-info {
+    display: block;
+}
+
+.saturn {
+    animation-duration: 353.36998s;
+    width: calc(var(--sun-size) + var(--saturn-orbit));
+    height: calc(var(--sun-size) + var(--saturn-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--saturn-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--saturn-orbit)) / 2));
+    z-index: 4;
+}
+
+.saturn .planet {
+    background-color: #ffd700;
+    width: calc(var(--saturn-size) / 5)
+        /* too big */
+    ;
+    height: calc(var(--saturn-size) / 5)
+        /* too big */
+    ;
+    top: -12px;
+}
+
+.saturn:hover {
+    border: 1px solid white;
+}
+
+.saturn:hover+.saturn-info {
+    display: block;
+}
+
+.uranus {
+    animation-duration: 1008.20215s;
+    width: calc(var(--sun-size) + var(--uranus-orbit));
+    height: calc(var(--sun-size) + var(--uranus-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--uranus-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--uranus-orbit)) / 2));
+    z-index: 3;
+}
+
+.uranus .planet {
+    background-color: #00a2e8;
+    width: calc(var(--uranus-size) / 3)
+        /* too big */
+    ;
+    height: calc(var(--uranus-size) / 3)
+        /* too big */
+    ;
+    top: -6px;
+}
+
+.uranus:hover {
+    border: 1px solid white;
+}
+
+.uranus:hover+.uranus-info {
+    display: block;
+}
+
+.neptune {
+    animation-duration: 1977.49584s;
+    width: calc(var(--sun-size) + var(--neptune-orbit));
+    height: calc(var(--sun-size) + var(--neptune-orbit));
+    top: calc(50% - (calc(var(--sun-size) + var(--neptune-orbit)) / 2));
+    left: calc(50% - (calc(var(--sun-size) + var(--neptune-orbit)) / 2));
+    z-index: 2;
+}
+
+.neptune .planet {
+    background-color: #000080;
+    width: calc(var(--neptune-size) / 2)
+        /* too big */
+    ;
+    height: calc(var(--neptune-size) / 2)
+        /* too big */
+    ;
+    top: -12px;
+}
+
+.neptune:hover {
+    border: 1px solid white;
+}
+
+.neptune:hover+.neptune-info {
+    display: block;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
